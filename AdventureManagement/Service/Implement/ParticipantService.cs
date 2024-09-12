@@ -2,6 +2,7 @@
 using AdventureManagement.API.Service.Interface;
 using AdventureManagement.API.ViewModel.Participant;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.InteropServices;
 
@@ -49,32 +50,22 @@ namespace AdventureManagement.API.Service.Implement
 
         public async Task<List<ParticipantVM>> GetAll()
         {
-            var participant = await _context.Participants
-                                .Include( p => p.ParticipantInteractions)
-                                .Select(p => new ParticipantVM
-                                {
-                                    Id = p.Id,
-                                    Name = p.Name,
-                                    Email = p.Email,
-                                    CreatedAt = p.CreatedAt,
-                                    AdventureCount = p.ParticipantInteractions.Count()
-                                }
-                                ).ToListAsync();
-                                return participant;
+            var participant = await _context.Participants.AsQueryable().AsNoTracking()
+                                .ProjectTo<ParticipantVM>(_mapper.ConfigurationProvider)
+                                .ToListAsync();
+            return participant;
         }
 
         public async Task<ParticipantVM> GetById(int id)
         {
             var participant = await _context.Participants
-                    .Include( p => p.ParticipantInteractions)
+                    .AsQueryable().AsNoTracking().ProjectTo<ParticipantVM>(_mapper.ConfigurationProvider)
                     .FirstOrDefaultAsync(p => p.Id == id);
             if(participant == null)
             {
                 return null;
             }    
-            var participantVM = _mapper.Map<ParticipantVM>(participant);
-            participantVM.AdventureCount = participant.ParticipantInteractions.Count();
-            return participantVM;
+            return participant;
         }
 
         public async Task<bool> Update(int id, ParticipantUpdateVM model)

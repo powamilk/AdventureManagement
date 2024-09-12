@@ -42,7 +42,6 @@ namespace AdventureManagement.API.Controllers
         public async Task<IActionResult> CreateAdventure(CreateAdventureVM model)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
-
             await _adventureService.CreateAdventureAsync(model);
             return StatusCode(201, new { message = "Chuyến phiêu lưu đã được tạo thành công." });
         }

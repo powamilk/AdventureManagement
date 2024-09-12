@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace AdventureManagement.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/participant-interactions")]
     public class ParticipantInteractionsController : ControllerBase
     {
         private readonly IParticipantInteractionService _interactionService;

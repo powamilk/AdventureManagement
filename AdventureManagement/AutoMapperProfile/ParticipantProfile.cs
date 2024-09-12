@@ -8,7 +8,8 @@ namespace AdventureManagement.API.AutoMapperProfile
     {
         public ParticipantProfile()
         {
-            CreateMap<Participant, ParticipantVM>();    
+            CreateMap<Participant, ParticipantVM>()
+                .ForMember(dest => dest.AdventureCount, opt => opt.MapFrom(src => src.ParticipantInteractions.Count));
         }
     }
 }

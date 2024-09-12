@@ -12,7 +12,6 @@ namespace AdventureManagement.API.Validator
 
             RuleFor(x => x.ParticipantId)
                 .GreaterThan(0).WithMessage("ParticipantId phải lớn hơn 0.");
-
             RuleFor(x => x.Rating)
                 .InclusiveBetween(1, 5).WithMessage("Rating phải nằm trong khoảng từ 1 đến 5.");
 
