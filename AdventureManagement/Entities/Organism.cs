@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace AdventureManagement.API.Entities;
+﻿namespace AdventureManagement.API.Entities;
 
 public partial class Organism
 {
@@ -12,4 +9,6 @@ public partial class Organism
     public string Description { get; set; } = null!;
 
     public string Habitat { get; set; } = null!;
+
+    public virtual ICollection<AdventureOrganism> AdventureOrganisms { get; set; } = new List<AdventureOrganism>();
 }

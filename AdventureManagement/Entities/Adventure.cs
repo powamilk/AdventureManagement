@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace AdventureManagement.API.Entities;
+﻿namespace AdventureManagement.API.Entities;
 
 public partial class Adventure
 {
@@ -22,4 +19,5 @@ public partial class Adventure
     public virtual Guide? Guide { get; set; }
 
     public virtual ICollection<ParticipantInteraction> ParticipantInteractions { get; set; } = new List<ParticipantInteraction>();
+    public virtual ICollection<AdventureOrganism> AdventureOrganisms { get; set; } = new List<AdventureOrganism>();
 }
