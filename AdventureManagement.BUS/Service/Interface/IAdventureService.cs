@@ -1,6 +1,6 @@
-﻿using AdventureManagement.API.ViewModel.AdventureViewModel;
+﻿using AdventureManagement.BUS.ViewModel.AdventureViewModel;
 
-namespace AdventureManagement.API.Service.Interface
+namespace AdventureManagement.BUS.Service.Interface
 {
     public interface IAdventureService
     {

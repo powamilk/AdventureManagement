@@ -1,5 +1,6 @@
-﻿using AdventureManagement.API.ViewModel.GuideViewModel;
-namespace AdventureManagement.API.ViewModel.AdventureVM
+﻿using AdventureManagement.BUS.ViewModel.GuideViewModel;
+using AdventureManagement.BUS.ViewModel.OrganismViewModel;
+namespace AdventureManagement.BUS.ViewModel.AdventureViewModel
 {
     public class AdventureVM
     {
@@ -10,6 +11,7 @@ namespace AdventureManagement.API.ViewModel.AdventureVM
         public int Duration { get; set; }
         public int ParticipantCount { get; set; }
         public GuideVM Guide { get; set; }
+        public List<OrganismVM> Organisms { get; set; }
     }
 
 }

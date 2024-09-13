@@ -1,6 +1,6 @@
-﻿namespace AdventureManagement.API.ViewModel.OrganismVM
+﻿namespace AdventureManagement.API.ViewModel.OrganismViewModel
 {
-    public class CreateOrganismVM
+    public class UpdateOrganismVM
     {
         public string Name { get; set; }
         public string Description { get; set; }

@@ -1,10 +1,10 @@
-﻿using AdventureManagement.API.Entities;
-using AdventureManagement.API.Service.Interface;
-using AdventureManagement.API.ViewModel.ParticipantInteraction;
+﻿using AdventureManagement.DAL.Entities;
+using AdventureManagement.BUS.Service.Interface;
+using AdventureManagement.BUS.ViewModel.ParticipantInteraction;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdventureManagement.API.Service.Implement
+namespace AdventureManagement.BUS.Service.Implement
 {
     public class ParticipantInteractionService : IParticipantInteractionService
     {
@@ -48,7 +48,7 @@ namespace AdventureManagement.API.Service.Implement
                 ParticipantId = model.ParticipantId,
                 Rating = model.Rating,
                 Comment = model.Comment,
-                CreatedAt = DateTime.UtcNow 
+                CreatedAt = DateTime.UtcNow
             };
 
             _context.ParticipantInteractions.Add(interaction);

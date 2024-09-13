@@ -1,5 +1,5 @@
 ﻿using AdventureManagement.API.Service.Interface;
-using AdventureManagement.API.ViewModel.AdventureVM;
+using AdventureManagement.API.ViewModel.AdventureViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

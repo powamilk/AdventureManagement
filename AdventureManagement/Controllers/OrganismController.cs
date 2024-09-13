@@ -1,5 +1,5 @@
 ﻿using AdventureManagement.API.Service.Interface;
-using AdventureManagement.API.ViewModel.OrganismVM;
+using AdventureManagement.API.ViewModel.OrganismViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +16,6 @@ namespace AdventureManagement.API.Controllers
             _organismService = organismService;
         }
 
-        // GET /api/organisms
         [HttpGet]
         public async Task<IActionResult> GetAllOrganisms()
         {
@@ -31,78 +30,37 @@ namespace AdventureManagement.API.Controllers
             }
         }
 
-        // GET /api/organisms/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOrganismById(int id)
         {
-            try
-            {
-                var organism = await _organismService.GetOrganismByIdAsync(id);
-                if (organism == null)
-                {
-                    return NotFound(new { message = $"Không tồn tại sinh vật với Id={id}" });
-                }
-                return Ok(organism);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Lỗi máy chủ: " + ex.Message });
-            }
+            var organism = await _organismService.GetOrganismByIdAsync(id);
+            if (organism == null) return NotFound(new { message = $"Không tồn tại sinh vật với Id={id}" });
+            return Ok(organism);
         }
 
-        // POST /api/organisms
         [HttpPost]
-        public async Task<IActionResult> CreateOrganism([FromBody] CreateOrganismVM model)
+        public async Task<IActionResult> CreateOrganism(CreateOrganismVM model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            try
-            {
-                await _organismService.CreateOrganismAsync(model);
-                return StatusCode(201, new { message = "Sinh vật đã được tạo thành công." });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Lỗi máy chủ: " + ex.Message });
-            }
+            await _organismService.CreateOrganismAsync(model);
+            return StatusCode(201, new { message = "Sinh vật đã được tạo thành công." });
         }
 
-        // PUT /api/organisms/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateOrganism(int id, [FromBody] UpdateOrganismVM model)
+        public async Task<IActionResult> UpdateOrganism(int id, UpdateOrganismVM model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid) return BadRequest(ModelState);
 
-            try
-            {
-                await _organismService.UpdateOrganismAsync(id, model);
-                return Ok(new { message = "Cập nhật sinh vật thành công." });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Lỗi máy chủ: " + ex.Message });
-            }
+            await _organismService.UpdateOrganismAsync(id, model);
+            return Ok(new { message = "Cập nhật sinh vật thành công." });
         }
 
-        // DELETE /api/organisms/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrganism(int id)
         {
-            try
-            {
-                await _organismService.DeleteOrganismAsync(id);
-                return NoContent();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Lỗi máy chủ: " + ex.Message });
-            }
+            await _organismService.DeleteOrganismAsync(id);
+            return NoContent();
         }
     }
 

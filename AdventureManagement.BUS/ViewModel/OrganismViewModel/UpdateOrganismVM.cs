@@ -1,4 +1,4 @@
-﻿namespace AdventureManagement.API.ViewModel.OrganismVM
+﻿namespace AdventureManagement.BUS.ViewModel.OrganismViewModel
 {
     public class UpdateOrganismVM
     {

@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+
 
 namespace AdventureManagementConsole.UI.UIService
 {
@@ -20,8 +23,18 @@ namespace AdventureManagementConsole.UI.UIService
 
         public async Task<List<OrganismModel>> GetAllOrganismsAsync()
         {
-            return await _httpClient.GetFromJsonAsync<List<OrganismModel>>("organisms");
+            var response = await _httpClient.GetAsync("organisms");
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<OrganismModel>>(content);
+            }
+            else
+            {
+                throw new Exception("Lỗi khi lấy dữ liệu");
+            }
         }
+
 
         public async Task CreateOrganismAsync(object organism)
         {

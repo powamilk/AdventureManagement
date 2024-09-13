@@ -1,10 +1,10 @@
-﻿using AdventureManagement.API.Entities;
-using AdventureManagement.API.Service.Interface;
-using AdventureManagement.API.ViewModel.OrganismViewModel;
+﻿using AdventureManagement.DAL.Entities;
+using AdventureManagement.BUS.Service.Interface;
+using AdventureManagement.BUS.ViewModel.OrganismViewModel;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdventureManagement.API.Service.Implement
+namespace AdventureManagement.BUS.Service.Implement
 {
     public class OrganismService : IOrganismService
     {

@@ -1,6 +1,6 @@
-﻿using AdventureManagement.API.ViewModel.OrganismViewModel;
+﻿using AdventureManagement.BUS.ViewModel.OrganismViewModel;
 
-namespace AdventureManagement.API.Service.Interface
+namespace AdventureManagement.BUS.Service.Interface
 {
     public interface IOrganismService
     {

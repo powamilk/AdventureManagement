@@ -35,7 +35,7 @@ namespace AdventureManagement.API.Controllers
         public async Task<IActionResult> CreateGuide(CreateGuideVM model)
         {
             await _guideService.CreateGuideAsync(model);
-            return StatusCode(201); // 201 Created
+            return StatusCode(201);
         }
 
         [HttpPut("{id}")]

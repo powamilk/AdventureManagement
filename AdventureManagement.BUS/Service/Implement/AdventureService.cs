@@ -1,10 +1,10 @@
-﻿using AdventureManagement.API.Entities;
-using AdventureManagement.API.Service.Interface;
-using AdventureManagement.API.ViewModel.AdventureViewModel;
+﻿using AdventureManagement.DAL.Entities;
+using AdventureManagement.BUS.Service.Interface;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using AdventureManagement.BUS.ViewModel.AdventureViewModel;
 
-namespace AdventureManagement.API.Service.Implement
+namespace AdventureManagement.BUS.Service.Implement
 {
     public class AdventureService : IAdventureService
     {
